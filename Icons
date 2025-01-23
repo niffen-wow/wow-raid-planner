@@ -1,9 +1,9 @@
-/ (root folder)
-    index.html      <-- Main page with boss links
-    boss1.html      <-- Page for Boss 1 with canvas
-    drawing.js       <-- JavaScript for drawing and dragging
-    style.css        <-- Your styles
+/my-project-folder
     /icons
-        mage.png    <-- Draggable icon 1
-        druid.png    <-- Draggable icon 2
-        deathknight.png    <-- Draggable icon 3
+        mage.png
+        druid.png
+        deathknight.png
+    index.html
+    boss1.html
+    drawing.js
+    style.css
