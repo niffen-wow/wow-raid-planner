@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss 1: Example Name</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Boss 1: Example Name</h1>
+        <a href="index.html">Back to Boss List</a>
+    </header>
+    <main>
+        <h2>Assignments</h2>
+        <ul id="assignments"></ul>
+        <h2>Strategy Notes</h2>
+        <p>Add specific notes for this boss here.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Your Guild Name</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
