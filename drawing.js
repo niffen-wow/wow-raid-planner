@@ -2,7 +2,7 @@ const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 
 let isDrawing = false;
-let currentIcon = null;
+let currentIcon = null; // This will store the current dragged icon
 
 // Set drawing styles
 ctx.strokeStyle = "black"; // Default color
@@ -67,13 +67,12 @@ canvas.addEventListener("drop", (e) => {
     const offsetX = e.offsetX;
     const offsetY = e.offsetY;
 
-    // Draw the dropped icon at the drop position
+    // Create a new image and draw it on the canvas
     if (currentIcon) {
         const img = new Image();
-        img.src = currentIcon.src;
+        img.src = currentIcon.src; // Use the source of the dragged icon
         img.onload = () => {
-            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Center the image at drop point
+            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Draw image centered at drop point
         };
     }
 });
-
