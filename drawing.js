@@ -2,6 +2,7 @@ const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 
 let isDrawing = false;
+let currentIcon = null;
 
 // Set drawing styles
 ctx.strokeStyle = "black"; // Default color
@@ -41,3 +42,38 @@ document.getElementById("saveDrawing").addEventListener("click", () => {
     link.href = canvas.toDataURL();
     link.click();
 });
+
+// Handle dragging icons
+const iconsPalette = document.getElementById("iconPalette");
+const draggableIcons = document.querySelectorAll(".draggableIcon");
+
+// Make icons draggable
+draggableIcons.forEach(icon => {
+    icon.addEventListener("dragstart", (e) => {
+        currentIcon = icon; // Store the dragged icon
+        e.dataTransfer.setData("text", icon.src); // Store the icon image source
+    });
+});
+
+// Allow the canvas to accept the dragged icon
+canvas.addEventListener("dragover", (e) => {
+    e.preventDefault(); // Allow the drop by preventing the default handling
+});
+
+canvas.addEventListener("drop", (e) => {
+    e.preventDefault();
+    
+    // Get the position of the drop on the canvas
+    const offsetX = e.offsetX;
+    const offsetY = e.offsetY;
+
+    // Draw the dropped icon at the drop position
+    if (currentIcon) {
+        const img = new Image();
+        img.src = currentIcon.src;
+        img.onload = () => {
+            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Center the image at drop point
+        };
+    }
+});
+
