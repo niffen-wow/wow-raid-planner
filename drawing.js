@@ -8,7 +8,7 @@ let currentIcon = null; // This will store the current dragged icon
 ctx.strokeStyle = "black"; // Default color
 ctx.lineWidth = 2; // Default line thickness
 
-// Event listeners for drawing
+// Event listeners for drawing lines (not for images)
 canvas.addEventListener("mousedown", (e) => {
     isDrawing = true;
     ctx.beginPath();
@@ -51,7 +51,7 @@ const draggableIcons = document.querySelectorAll(".draggableIcon");
 draggableIcons.forEach(icon => {
     icon.addEventListener("dragstart", (e) => {
         currentIcon = icon; // Store the dragged icon
-        e.dataTransfer.setData("text", icon.src); // Store the icon image source
+        e.dataTransfer.setData("text", icon.src); // Store the icon image source in the drag data
     });
 });
 
@@ -63,18 +63,23 @@ canvas.addEventListener("dragover", (e) => {
 canvas.addEventListener("drop", (e) => {
     e.preventDefault();
     
-    // Get the position of the drop on the canvas
+    // Get the position where the drop occurs on the canvas
     const offsetX = e.offsetX;
     const offsetY = e.offsetY;
 
-    // Create a new image and draw it on the canvas
+    // Ensure we have a valid dragged icon
     if (currentIcon) {
         const img = new Image();
         img.src = currentIcon.src; // Use the source of the dragged icon
         
         img.onload = () => {
             // Once the image is loaded, draw it on the canvas
-            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Center the image at the drop point
+            // Position the image at the drop location, centered
+            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2);
+        };
+
+        img.onerror = () => {
+            console.error("Failed to load the image.");
         };
     }
 });
