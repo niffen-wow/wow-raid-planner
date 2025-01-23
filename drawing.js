@@ -71,8 +71,10 @@ canvas.addEventListener("drop", (e) => {
     if (currentIcon) {
         const img = new Image();
         img.src = currentIcon.src; // Use the source of the dragged icon
+        
         img.onload = () => {
-            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Draw image centered at drop point
+            // Once the image is loaded, draw it on the canvas
+            ctx.drawImage(img, offsetX - img.width / 2, offsetY - img.height / 2); // Center the image at the drop point
         };
     }
 });
