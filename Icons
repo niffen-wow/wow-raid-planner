@@ -4,6 +4,6 @@
     drawing.js       <-- JavaScript for drawing and dragging
     style.css        <-- Your styles
     /icons
-        icon1.png    <-- Draggable icon 1
-        icon2.png    <-- Draggable icon 2
-        icon3.png    <-- Draggable icon 3
+        mage.png    <-- Draggable icon 1
+        druid.png    <-- Draggable icon 2
+        deathknight.png    <-- Draggable icon 3
